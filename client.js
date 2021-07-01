@@ -7,6 +7,11 @@ const connect = function () {
     port: 50541
   });
 
+  // Messages from server
+  conn.on('data', (message) => {
+    console.log(`Message from the Server: ${message}`);
+  });
+
   // Print a message on successful connection with the server
   conn.on("connect", () => {
     console.log("You're connected to the server!")
@@ -30,8 +35,6 @@ const connect = function () {
     //     console.log(left);
     //   }, 50)
   });
-
-  // conn.on()
 
   // interpret incoming data as text
   conn.setEncoding("utf8");
